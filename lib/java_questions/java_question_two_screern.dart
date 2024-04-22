@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/finishining_screen.dart';
+import 'package:quizapp/java_questions/java_question_three_screen.dart';
 
-class JavaQuestionThreeScreen extends StatefulWidget {
+class JavaQuestionTwoScreen extends StatefulWidget {
   final int score;
-  const JavaQuestionThreeScreen({super.key, required this.score});
+  const JavaQuestionTwoScreen({super.key, required this.score});
 
   @override
-  State<JavaQuestionThreeScreen> createState() =>
-      _JavaQuestionThreeScreenState();
+  State<JavaQuestionTwoScreen> createState() => _JavaQuestionTwoScreenState();
 }
 
-class _JavaQuestionThreeScreenState extends State<JavaQuestionThreeScreen> {
+class _JavaQuestionTwoScreenState extends State<JavaQuestionTwoScreen> {
   bool? isQuestionOneCorrect;
   bool? isQuestionTwoCorrect;
   bool? isQuestionThreeCorrect;
@@ -73,7 +72,7 @@ class _JavaQuestionThreeScreenState extends State<JavaQuestionThreeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "3 Of 3 Questions",
+                    "2 Of 3 Questions",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -96,7 +95,7 @@ class _JavaQuestionThreeScreenState extends State<JavaQuestionThreeScreen> {
                 children: [
                   Flexible(
                     child: Text(
-                      "3.Java is a programmng language developed by __________.",
+                      "2.Java is a programmng language developed by __________.",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -228,13 +227,13 @@ class _JavaQuestionThreeScreenState extends State<JavaQuestionThreeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => FinishiningScreen(
+                              builder: (context) => JavaQuestionThreeScreen(
                                   score: currentscore + widget.score)));
                     },
                     child: const Row(
                       children: [
                         Text(
-                          "Finish",
+                          "Next",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,

@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/java_questions/java_question_two_screern.dart';
 
-class JavaQuestionOneScreen extends StatelessWidget {
+class JavaQuestionOneScreen extends StatefulWidget {
   const JavaQuestionOneScreen({super.key});
+
+  @override
+  State<JavaQuestionOneScreen> createState() => _JavaQuestionOneScreenState();
+}
+
+class _JavaQuestionOneScreenState extends State<JavaQuestionOneScreen> {
+  bool? isQuestionOneCorrect;
+  bool? isQuestionTwoCorrect;
+  bool? isQuestionThreeCorrect;
+  int score = 0;
+
+  Color setColor(bool? isCorrect) {
+    if (isCorrect == null) {
+      return const Color(0Xff7494fc);
+    } else if (isCorrect == true) {
+      return Colors.green;
+    } else {
+      return Colors.red;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,19 +108,123 @@ class JavaQuestionOneScreen extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      isQuestionOneCorrect = false;
+                      isQuestionTwoCorrect = null;
+                      isQuestionThreeCorrect = null;
+                      score = 0;
+                    });
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0Xff7494fc),
                       minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
+                          borderRadius: BorderRadius.circular(10)),
+                      side: BorderSide(
+                        color: setColor(isQuestionOneCorrect),
+                        width: 5.0,
+                      )),
                   child: const Text(
                     "Microsoft",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                     ),
-                  ))
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      isQuestionOneCorrect = null;
+                      isQuestionTwoCorrect = false;
+                      isQuestionThreeCorrect = null;
+                      score = 0;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0Xff7494fc),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: BorderSide(
+                        color: setColor(isQuestionTwoCorrect),
+                        width: 5.0,
+                      )),
+                  child: const Text(
+                    "Google",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      isQuestionOneCorrect = null;
+                      isQuestionTwoCorrect = null;
+                      isQuestionThreeCorrect = true;
+                      score = 1;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0Xff7494fc),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: BorderSide(
+                        color: setColor(isQuestionThreeCorrect),
+                        width: 5.0,
+                      )),
+                  child: const Text(
+                    "James Gosling",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  )),
+              const SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 48, 113, 36),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => JavaQuestionTwoScreen(
+                                    score: score,
+                                  )));
+                    },
+                    child: const Row(
+                      children: [
+                        Text(
+                          "Next",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              )
             ])),
       ),
     );
